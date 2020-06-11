@@ -12,8 +12,16 @@ proc-macro = true
 name = "tests"
 path = "tests/progress.rs"
 
+# For cargo expand --test current
+[[test]]
+name = "current"
+path = "tests/07-repeated-field.rs"
+
 [dev-dependencies]
 trybuild = { version = "1.0", features = ["diff"] }
 
 [dependencies]
-# TODO
+proc-macro2 = "1.0.18"
+quote = "1.0.7"
+# extra-traits includes Debug implementations for AST node
+syn = { version = "1.0.31", features = ["derive", "extra-traits", "visit"] }
